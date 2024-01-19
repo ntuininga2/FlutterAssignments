@@ -75,7 +75,7 @@ class Container1 extends StatelessWidget {
           color: Colors.black
         )
       ),
-      child: Center(child: Text('Container 1')),
+      child: const Center(child: Text('Container 1')),
     );
   }
 }
@@ -92,11 +92,11 @@ class Container2 extends StatelessWidget {
       child: Container(
         height: 100.0,
         width: 100.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.rectangle,
           color: Colors.white,
         ),
-        child: Center(child: Text('Container 2')),
+        child: const Center(child: Text('Container 2')),
       ),
     );
   }
@@ -114,11 +114,11 @@ class Container3 extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Container(
           width: 100.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.yellow,
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text('Container 3'),
@@ -142,11 +142,11 @@ class Container4 extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Container(
           width: 100.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.blue,
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -178,7 +178,13 @@ class Container5 extends StatelessWidget {
             color: Colors.white
           )
         ),
-        child: Center(child: Text('Container 5', style: TextStyle(color: Colors.white),)),
+        child: const Center(
+          child: Text('Container 5', 
+          style: TextStyle(
+            color: Colors.white
+            ),
+          )
+        ),
       ),
     );
   }
@@ -194,11 +200,11 @@ class Container6 extends StatelessWidget {
     return Container(
       width: 100.0,
       height: 200.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.red,
       ),
-      child: Text('Con 6', style: TextStyle(fontSize: 30),),
+      child: const Text('Con 6', style: TextStyle(fontSize: 30),),
     );
   }
 }
