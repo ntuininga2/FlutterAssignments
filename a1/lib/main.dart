@@ -32,19 +32,19 @@ class MyApp extends StatelessWidget {
           children: [
             //TODO: Put your code here to complete this app.
             Column(
-              children: [
+              children: <Widget>[
                 Container1(),
                 Container2(),
               ],
             ),
             Column(
-              children: [
+              children: <Widget>[
                 Container3(),
                 Container4()
               ],
             ),
             Column(
-              children: [
+              children: <Widget>[
                 Container5(),
                 Container6()
               ],

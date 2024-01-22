@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../models/stock-list.dart';
 import '../models/stock.dart';
-import '../services/stock-service.dart';
-import '../services/db-service.dart';
+import '../services/stock-service.txt';
+import '../services/db-service.txt';
 
 class HomeView extends StatefulWidget {
   @override
