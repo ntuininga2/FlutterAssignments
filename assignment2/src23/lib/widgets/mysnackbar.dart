@@ -13,7 +13,7 @@ class MySnackBar {
   }
   SnackBar get(){
   return SnackBar(
-    duration: const Duration(seconds: 1),
+    duration: const Duration(seconds: 5),
     behavior: SnackBarBehavior.floating,
     content: Row(
       children: [
@@ -24,6 +24,7 @@ class MySnackBar {
         Text(text),
       ],
     ),
+    action: SnackBarAction(label: "label", onPressed: () {},),
   );
 }
 }

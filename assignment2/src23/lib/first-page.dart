@@ -90,11 +90,35 @@ class MyFirstPageState extends State<MyFirstPage> {
                   // a submit button that will show a
                   // snackbar with the "firstName"
                   // if validation is satisfied.
-                  Form(
-                    key: formKey,
-                    child: TextFormField(
+                    TextFormField(
                       controller: textEditingController,
-                    ),
+                      decoration: InputDecoration(
+                        hintText: "first name",
+                        helperText: "min 1, max 10",
+                        suffixIcon: Icon(Icons.check_circle)
+                        ),
+                      maxLength: 10,
+                      validator: (value) {
+                        return value!.isEmpty ? "Must provide a name" : null;
+                      },
+                      onSaved: (value) {
+                        msg1 = value!;
+                      },
+                  ),
+                  ElevatedButton(
+                    child: Text("Submit"),
+                    onPressed: (){
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+
+                        final snackBar = MySnackBar(text: msg1);
+                        
+                        snackBar.show();
+                        
+                        textEditingController.clear();
+                        setState(() {});
+                      }
+                    },
                   )
                 ],
               ),
@@ -104,4 +128,9 @@ class MyFirstPageState extends State<MyFirstPage> {
       ),
     );
   }
+}
+
+
+void showSnackbar(String value){
+
 }
