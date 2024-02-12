@@ -3,13 +3,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-//https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e
-
-//This app makes use of the Row, Column,
-//Expanded, Padding, Transform, Container,
-//BoxDecoration, BoxShape, Colors,
-//Border, Center, Align, Alignment,
-//EdgeInsets, Text, and TextStyle Widgets
 void main() {
   runApp(MyApp());
 }
