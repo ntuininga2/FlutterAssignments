@@ -129,7 +129,7 @@ OutlineInputBorder _buildBorderStyle(Color color,
 }
 
 IconThemeData _buildIconTheme(IconThemeData original) {
-  return original.copyWith(color: _colorScheme.onPrimary);
+  return original.copyWith(color: _colorScheme.primary);
 }
 
 TextStyle _buildTextStyle(Color color,
