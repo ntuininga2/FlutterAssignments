@@ -24,7 +24,11 @@ class MySnackBar {
         Text(text),
       ],
     ),
-    action: SnackBarAction(label: "label", onPressed: () {},),
+    action: SnackBarAction(
+      label: 'Click me', 
+      onPressed: () {
+        print(text);
+      },),
   );
 }
 }

@@ -24,6 +24,7 @@ ThemeData buildTheme() {
     //inputDecorationTheme applies to TextField Widget.
     inputDecorationTheme: _buildInputDecorationTheme(base.inputDecorationTheme),
     textSelectionTheme: _textSelectionThemeData(),
+    snackBarTheme: _buildSnackBarTheme(base.snackBarTheme)
   );
 }
 
@@ -189,6 +190,14 @@ TextTheme _buildTextTheme(TextTheme original) {
         //The bodyColor is applied to the remaining text styles.
         bodyColor: _colorScheme.onPrimary,
       );
+}
+
+SnackBarThemeData _buildSnackBarTheme(SnackBarThemeData original) {
+  return original.copyWith(
+    backgroundColor: _colorScheme.onPrimary,
+    contentTextStyle: _buildTextStyle(_colorScheme.primary, size: 20),
+    actionTextColor: _colorScheme.primary,
+  );
 }
 
 Color _getBackgroundColor(Set<MaterialState> states) {
