@@ -18,7 +18,7 @@ class MyFirstPage extends StatefulWidget {
 }
 
 class MyFirstPageState extends State<MyFirstPage> {
-  bool enabled = false;
+  bool enabled = true;
   int timesClicked = 0;
   String msg1 = '';
   String msg2 = '';
@@ -37,7 +37,10 @@ class MyFirstPageState extends State<MyFirstPage> {
               //TODO: Replace this Text Widget
               // and build the label and switch here
               // as children of the row.
-              Text('testing 1 2 3 '),
+              Switch(
+                value: enabled,
+                onChanged: (value) => enabled,
+              )
             ],
           ),
           Row(
@@ -48,7 +51,26 @@ class MyFirstPageState extends State<MyFirstPage> {
               // For each button use a 
               // "Visibility Widget" and its child 
               // will be an "ElevatedButton"
-              
+              Visibility(
+                visible: enabled,
+                child: ElevatedButton(
+                  child: Text(timesClicked == 0 ? "Click Me" : "Click Me $timesClicked"),
+                  onPressed: (){
+                    timesClicked++;
+                    setState(() {});
+                  },
+                ),
+              ),
+              Visibility(
+                visible: enabled,
+                child: ElevatedButton(
+                  child: Text("Reset"),
+                  onPressed: (){
+                    timesClicked = 0;
+                    setState(() {});
+                  },
+                ),
+              )              
             ],
           ),
           const SizedBox(
@@ -68,7 +90,12 @@ class MyFirstPageState extends State<MyFirstPage> {
                   // a submit button that will show a
                   // snackbar with the "firstName"
                   // if validation is satisfied.
-                  
+                  Form(
+                    key: formKey,
+                    child: TextFormField(
+                      controller: textEditingController,
+                    ),
+                  )
                 ],
               ),
             ),
