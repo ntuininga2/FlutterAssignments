@@ -39,7 +39,11 @@ class MyFirstPageState extends State<MyFirstPage> {
               // as children of the row.
               Switch(
                 value: enabled,
-                onChanged: (value) => enabled,
+                onChanged: (value){
+                  setState(() {
+                    enabled = value;
+                  });
+                },
               )
             ],
           ),
@@ -51,24 +55,30 @@ class MyFirstPageState extends State<MyFirstPage> {
               // For each button use a 
               // "Visibility Widget" and its child 
               // will be an "ElevatedButton"
-              Visibility(
-                visible: enabled,
-                child: ElevatedButton(
-                  child: Text(timesClicked == 0 ? "Click Me" : "Click Me $timesClicked"),
-                  onPressed: (){
-                    timesClicked++;
-                    setState(() {});
-                  },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Visibility(
+                  visible: enabled,
+                  child: ElevatedButton(
+                    child: Text(timesClicked == 0 ? "Click Me" : "Click Me $timesClicked"),
+                    onPressed: (){
+                      timesClicked++;
+                      setState(() {});
+                    },
+                  ),
                 ),
               ),
-              Visibility(
-                visible: enabled,
-                child: ElevatedButton(
-                  child: Text("Reset"),
-                  onPressed: (){
-                    timesClicked = 0;
-                    setState(() {});
-                  },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Visibility(
+                  visible: enabled,
+                  child: ElevatedButton(
+                    child: Text("Reset"),
+                    onPressed: (){
+                      timesClicked = 0;
+                      setState(() {});
+                    },
+                  ),
                 ),
               )              
             ],
