@@ -18,7 +18,7 @@ class MyFirstPage extends StatefulWidget {
 }
 
 class MyFirstPageState extends State<MyFirstPage> {
-  bool enabled = false;
+  bool enabled = true;
   int timesClicked = 0;
   String msg1 = '';
   String msg2 = '';
@@ -39,8 +39,12 @@ class MyFirstPageState extends State<MyFirstPage> {
               // as children of the row.
               Switch(
                 value: enabled,
-                onChanged: (value) => enabled,
-              ),
+                onChanged: (value){
+                  setState(() {
+                    enabled = value;
+                  });
+                },
+              )
             ],
           ),
           Row(
@@ -51,20 +55,32 @@ class MyFirstPageState extends State<MyFirstPage> {
               // For each button use a 
               // "Visibility Widget" and its child 
               // will be an "ElevatedButton"
-              Visibility(
-                visible: enabled,
-                child:  ElevatedButton(
-                  child: Text(timesClicked == 0 ? "Click Me": "Click Me $timesClicked"),
-                  onPressed: (){timesClicked++;},
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Visibility(
+                  visible: enabled,
+                  child: ElevatedButton(
+                    child: Text(timesClicked == 0 ? "Click Me" : "Click Me $timesClicked"),
+                    onPressed: (){
+                      timesClicked++;
+                      setState(() {});
+                    },
+                  ),
                 ),
               ),
-                Visibility(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Visibility(
                   visible: enabled,
                   child: ElevatedButton(
                     child: Text("Reset"),
-                    onPressed: (){timesClicked=0;},
+                    onPressed: (){
+                      timesClicked = 0;
+                      setState(() {});
+                    },
                   ),
-                ),              
+                ),
+              )              
             ],
           ),
           const SizedBox(
@@ -84,20 +100,36 @@ class MyFirstPageState extends State<MyFirstPage> {
                   // a submit button that will show a
                   // snackbar with the "firstName"
                   // if validation is satisfied.
-                  Form(
-                    key: formKey,
-                    child: TextFormField(
+                    TextFormField(
                       controller: textEditingController,
+                      decoration: InputDecoration(
+                        hintText: "first name",
+                        helperText: "min 1, max 10",
+                        suffixIcon: Icon(Icons.check_circle)
+                        ),
                       maxLength: 10,
-                      validator: (value){
+                      validator: (value) {
                         return value!.isEmpty ? "Must provide a name" : null;
                       },
-                      onFieldSubmitted: (value ){
-                        print(value);
+                      onSaved: (value) {
+                        msg1 = value!;
                       },
-                    ),
+                  ),
+                  ElevatedButton(
+                    child: Text("Submit"),
+                    onPressed: (){
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+
+                        final snackBar = MySnackBar(text: msg1);
+                        
+                        snackBar.show();
+                        
+                        textEditingController.clear();
+                        setState(() {});
+                      }
+                    },
                   )
-                  
                 ],
               ),
             ),
