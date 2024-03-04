@@ -93,7 +93,11 @@ class SQFliteDbService {
     try {
       //TODO: 
       //Put code here to update stock info.
-      
+      await db!.update(
+        'stocks',
+        stock.toMap(),
+        where: "symbol = ?",
+        whereArgs: [stock.symbol]);
     } catch (e) {
       print('SQFliteDbService updateStock: $e');
     }
