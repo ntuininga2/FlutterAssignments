@@ -122,7 +122,11 @@ class HomeViewState extends State<HomeView> {
                             name: data['Name'], 
                             price: data['BookValue'])
                         ); 
+                        stockList = await databaseService.getAllStocksFromDb();
                         databaseService.printAllStocksInDbToConsole();
+                        setState(() {
+                          
+                        });
                       } else {
                         print("Failed to get stock symbol company info");
                       }
