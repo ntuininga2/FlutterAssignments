@@ -139,8 +139,3 @@ class MyFirstPageState extends State<MyFirstPage> {
     );
   }
 }
-
-
-void showSnackbar(String value){
-
-}
